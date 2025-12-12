@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
-// Definición de la estructura del Libro
+// Definicion de la estructura del Libro
 typedef struct Libro
  {
     int codigo;
@@ -72,7 +72,7 @@ void agregarLibro(Libro *nuevoLibro)
         }
         actual->siguiente = nuevoLibro;
     }
-    printf("\n✅ Libro '%s' agregado a la lista.\n", nuevoLibro->titulo);
+    printf("\n Libro '%s' agregado a la lista.\n", nuevoLibro->titulo);
 }
 
 // --- Funciones de Persistencia (Guardar/Cargar) ---
@@ -98,7 +98,7 @@ void guardarLista()
     }
 
     fclose(archivo);
-    printf("\n💾 Lista de %d libros guardada en '%s'.\n", count, NOMBRE_ARCHIVO);
+    printf("\n Lista de %d libros guardada en '%s'.\n", count, NOMBRE_ARCHIVO);
 }
 
 void cargarLista() {
@@ -138,7 +138,7 @@ void cargarLista() {
     }
 
     fclose(archivo);
-    printf("\n📖 Lista de %d libros cargada desde '%s'.\n", count, NOMBRE_ARCHIVO);
+    printf("\n Lista de %d libros cargada desde '%s'.\n", count, NOMBRE_ARCHIVO);
 }
 
 
@@ -146,11 +146,11 @@ void cargarLista() {
 
 void mostrarLibro(Libro *libro) {
     printf("  ----------------------------------\n");
-    printf("  Código: %d\n", libro->codigo);
-    printf("  Título: %s\n", libro->titulo);
+    printf("  Codigo: %d\n", libro->codigo);
+    printf("  Titulo: %s\n", libro->titulo);
     printf("  Autor: %s\n", libro->autor);
-    printf("  Año: %d\n", libro->ano);
-    printf("  Descripción: %s\n", libro->descripcion);
+    printf("  Ano: %d\n", libro->ano);
+    printf("  Descripcion: %s\n", libro->descripcion);
     printf("  Precio: $%.2f\n", libro->precio);
 }
 
@@ -160,7 +160,7 @@ void imprimirLista()
     printf("\n--- Lista Completa de Libros ---\n");
     if (listaLibros == NULL)
         {
-        printf("La lista de libros está vacía.\n");
+        printf("La lista de libros esta vacia.\n");
     } else
     {
         Libro *actual = listaLibros;
@@ -183,7 +183,7 @@ void buscarLibro(const char *terminoBusqueda) {
         return;
     }
 
-    printf("\n🔍 Buscando libros que contengan '%s'...\n", terminoBusqueda);
+    printf("\n Buscando libros que contengan '%s'...\n", terminoBusqueda);
     Libro *actual = listaLibros;
     int encontrados = 0;
 
@@ -228,9 +228,9 @@ void buscarLibro(const char *terminoBusqueda) {
 
     if (encontrados == 0)
         {
-        printf("\n❌ No se encontraron libros con el término de búsqueda.\n");
+        printf("\n No se encontraron libros con el término de búsqueda.\n");
     } else {
-        printf("\n✅ Se encontraron %d resultados.\n", encontrados);
+        printf("\n Se encontraron %d resultados.\n", encontrados);
     }
 }
 
@@ -252,7 +252,7 @@ void ordenarListaBubbleSort()
     Libro *ptr1;
     Libro *lptr = NULL; // Puntero al último nodo ya ordenado
 
-    printf("\n⏳ Ordenando lista por precio con Bubble Sort...\n");
+    printf("\n Ordenando lista por precio con Bubble Sort...\n");
 
     do {
         swapp = 0;
@@ -313,7 +313,7 @@ void ordenarListaBubbleSort()
         lptr = ptr1;
     } while (swapp);
 
-    printf("\n✅ Lista ordenada por precio de menor a mayor.\n");
+    printf("\n Lista ordenada por precio de menor a mayor.\n");
 }
 
 
@@ -351,19 +351,19 @@ int main() {
 
 
     do {
-        printf("\n\n=== GESTOR DE LIBRERÍA ===\n");
+        printf("\n\n=== GESTOR DE LIBRERIA ===\n");
         printf("1. Agregar Nuevo Libro\n");
         printf("2. Guardar Lista en Disco\n");
         printf("3. Cargar Lista desde Disco\n");
-        printf("4. Buscar Libro por Título o Autor\n");
+        printf("4. Buscar Libro por Titulo o Autor\n");
         printf("5. Ordenar Lista por Precio (Bubble Sort)\n"); // Nuevo Requisito 2
         printf("6. Imprimir Lista de Libros\n");               // Nuevo Requisito 3
         printf("7. Salir (y Guardar)\n");
-        printf("Selecciona una opción: ");
+        printf("Selecciona una opcion: ");
 
         if (scanf("%d", &opcion) != 1)
             {
-            printf("\nOpción inválida. Intenta de nuevo.\n");
+            printf("\nOpcion invalida. Intenta de nuevo.\n");
             while (getchar() != '\n');
             opcion = 0;
             continue;
@@ -378,7 +378,7 @@ int main() {
          {
             case 1:
                 printf("\n--- Agregar Nuevo Libro ---\n");
-                printf("Título: ");
+                printf("Titulo: ");
                 fgets(titulo, sizeof(titulo), stdin);
                 titulo[strcspn(titulo, "\n")] = 0;
 
@@ -386,23 +386,23 @@ int main() {
                 fgets(autor, sizeof(autor), stdin);
                 autor[strcspn(autor, "\n")] = 0;
 
-                printf("Año: ");
+                printf("Ano: ");
                 if (scanf("%d", &ano) != 1)
                     {
-                    printf("Entrada de año inválida. Cancelando adición.\n");
+                    printf("Entrada de ano invalida. Cancelando adicion.\n");
                     while (getchar() != '\n');
                     break;
                 }
                 while (getchar() != '\n');
 
-                printf("Descripción: ");
+                printf("Descripcion: ");
                 fgets(descripcion, sizeof(descripcion), stdin);
                 descripcion[strcspn(descripcion, "\n")] = 0;
 
                 printf("Precio: ");
                 if (scanf("%f", &precio) != 1)
                     {
-                    printf("Entrada de precio inválida. Cancelando adición.\n");
+                    printf("Entrada de precio invalida. Cancelando adicion.\n");
                     while (getchar() != '\n');
                     break;
                 }
@@ -425,7 +425,7 @@ int main() {
 
             case 4:
                 printf("\n--- Buscar Libro ---\n");
-                printf("Ingresa Título o Autor a buscar: ");
+                printf("Ingresa Titulo o Autor a buscar: ");
                 fgets(terminoBusqueda, sizeof(terminoBusqueda), stdin);
                 terminoBusqueda[strcspn(terminoBusqueda, "\n")] = 0;
                 buscarLibro(terminoBusqueda);
@@ -449,7 +449,7 @@ int main() {
                 break;
 
             default:
-                printf("\nOpción no válida. Intenta de nuevo.\n");
+                printf("\nOpcion no valida. Intenta de nuevo.\n");
                 esperarEnter();
                 break;
         }
